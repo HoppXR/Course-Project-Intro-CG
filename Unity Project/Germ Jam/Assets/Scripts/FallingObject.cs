@@ -4,10 +4,15 @@ using UnityEngine;
 public class FallingObject : NetworkBehaviour
 {
     private Animator _animator;
+    
+    [Header("Falling Object Properties")]
     [SerializeField] private float fallCooldown = 3;
     private bool _isFalling;
     [SerializeField] private float nextFallTime;
     private float _timer;
+    
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem dropParticle;
     
     void Start()
     {
@@ -33,5 +38,10 @@ public class FallingObject : NetworkBehaviour
             else
                 fallCooldown -= 3;
         }
+    }
+
+    public void SpawnParticles()
+    {
+        dropParticle.Play();
     }
 }
