@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1841426650
+  GlobalObjectIdHash: 624309859
   InScenePlacedSourceGlobalObjectIdHash: 2649216770
   DeferredDespawnTick: 0
   Ownership: 1
@@ -262,6 +262,7 @@ MonoBehaviour:
   moveSpeed: 10
   maxSpeed: 10
   rotationSpeed: 10
+  squishSound: {fileID: 8300000, guid: 629c3e395cd01c349804ab1df565a73f, type: 3}
 --- !u!95 &3608701574908560812
 Animator:
   serializedVersion: 7

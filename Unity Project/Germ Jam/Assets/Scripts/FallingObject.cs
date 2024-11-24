@@ -14,6 +14,10 @@ public class FallingObject : NetworkBehaviour
     [Header("Particles")]
     [SerializeField] private ParticleSystem dropParticle;
     
+    [Header("Audio")]
+    [SerializeField] private AudioClip shakeSound;
+    [SerializeField] private AudioClip dropSound;
+    
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -30,6 +34,8 @@ public class FallingObject : NetworkBehaviour
     {
         if (_timer >= nextFallTime)
         {
+            GameManager.instance.PlaySound(shakeSound, transform, 0.75f);
+            
             _animator.SetTrigger("Fall");
             nextFallTime = _timer + fallCooldown;
             
@@ -43,5 +49,10 @@ public class FallingObject : NetworkBehaviour
     public void SpawnParticles()
     {
         dropParticle.Play();
+    }
+
+    public void PlayDropSound()
+    {
+        GameManager.instance.PlaySound(dropSound, transform, 1f);
     }
 }

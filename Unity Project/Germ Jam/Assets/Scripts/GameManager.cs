@@ -1,9 +1,7 @@
-using System;
-using TMPro;
+using Unity.Mathematics;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : NetworkBehaviour {
     
@@ -19,19 +17,23 @@ public class GameManager : NetworkBehaviour {
     [SerializeField] private GameObject[] aliveIcons;
     [SerializeField] private GameObject[] deadIcons;
     
-    //[SerializeField] private GameObject gameUIPrefab;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSourceObject;
     
     public override void OnNetworkSpawn() {
         SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId);
     }
 
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(gameObject);
+        else
+            instance = this;
+    }
+
     private void Start()
     {
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
-        
         EnableTimeServerRpc();
         
         gameOverUI.SetActive(false);
@@ -63,6 +65,21 @@ public class GameManager : NetworkBehaviour {
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void PlaySound(AudioClip clip, Transform spawnPoint, float volume)
+    {
+        AudioSource audioSource = Instantiate(audioSourceObject, spawnPoint.position, Quaternion.identity);
+        
+        audioSource.clip = clip;
+        
+        audioSource.volume = volume;
+        
+        audioSource.Play();
+        
+        float clipLength = clip.length;
+        
+        Destroy(audioSource.gameObject, clipLength);
     }
 
     public void PlayerDie(int playerIndex)
