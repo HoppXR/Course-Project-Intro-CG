@@ -109,8 +109,6 @@ public class GameManager : NetworkBehaviour {
     private void GameOver()
     {
         gameOverUI.SetActive(true);
-        
-        Time.timeScale = 0;
     }
 
     [ServerRpc(RequireOwnership = false)]

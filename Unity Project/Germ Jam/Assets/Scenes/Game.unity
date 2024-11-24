@@ -2943,7 +2943,7 @@ MonoBehaviour:
   nextFallTime: 3
   dropParticle: {fileID: 1590974601}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
-  dropSound: {fileID: 0}
+  dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!1 &1211891116
 GameObject:
   m_ObjectHideFlags: 0
@@ -4190,7 +4190,7 @@ MonoBehaviour:
   nextFallTime: 23
   dropParticle: {fileID: 165899553}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
-  dropSound: {fileID: 0}
+  dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!224 &1739570492 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8000281336837709228, guid: b058632094e4c114ead5d9f7756f12e6, type: 3}
@@ -5046,7 +5046,7 @@ MonoBehaviour:
   nextFallTime: 18
   dropParticle: {fileID: 743286572}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
-  dropSound: {fileID: 0}
+  dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!1 &2067585282
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,7 +5651,7 @@ MonoBehaviour:
   nextFallTime: 8
   dropParticle: {fileID: 755144053}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
-  dropSound: {fileID: 0}
+  dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!4 &988828832427832437
 Transform:
   m_ObjectHideFlags: 0
@@ -6540,7 +6540,7 @@ MonoBehaviour:
   nextFallTime: 13
   dropParticle: {fileID: 902322346}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
-  dropSound: {fileID: 0}
+  dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!114 &3469287837167114396
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -53,6 +53,6 @@ public class FallingObject : NetworkBehaviour
 
     public void PlayDropSound()
     {
-        GameManager.instance.PlaySound(dropSound, transform, 1f);
+        GameManager.instance.PlaySound(dropSound, transform, 0.8f);
     }
 }

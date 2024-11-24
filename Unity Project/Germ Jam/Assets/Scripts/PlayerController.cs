@@ -22,6 +22,9 @@ public class PlayerController : NetworkBehaviour
     [Header("Audio")] 
     [SerializeField] private AudioClip squishSound;
     
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem squishParticles;
+    
     #endregion
     
     private void Awake()
@@ -60,7 +63,9 @@ public class PlayerController : NetworkBehaviour
 
     private void Die()
     {
-        GameManager.instance.PlaySound(squishSound, transform, 1f);
+        GameManager.instance.PlaySound(squishSound, transform, 0.75f);
+        
+        squishParticles.Play();
         
         transform.localScale = new Vector3(transform.localScale.x, 0, transform.localScale.z);
         
