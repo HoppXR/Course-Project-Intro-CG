@@ -7,7 +7,8 @@ Shader "Assignment1/SpecularRim"
         _SpecColor ("Specular Color", Color) = (1, 1, 1, 1) 
         _RimColor ("Rim Color", Color) = (0, 0.5, 0.5, 1)  
         _Shininess ("Shininess", Range(0.1, 100)) = 16   
-        _RimPower ("Rim Power", Range(0.5, 8.0)) = 3.0   
+        _RimPower ("Rim Power", Range(0.5, 8.0)) = 3.0
+        _UseTexture ("Use Texture", Float) = 1   // Texture Toggle
     }
 
     SubShader
@@ -47,7 +48,8 @@ Shader "Assignment1/SpecularRim"
                 float4 _RimColor;   
                 float _RimPower;    
                 float4 _SpecColor; 
-                float _Shininess;  
+                float _Shininess;
+                float _UseTexture;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -77,7 +79,11 @@ Shader "Assignment1/SpecularRim"
                 half3 lightDir = normalize(mainLight.direction);
 
                 half NdotL = saturate(dot(normalWS, lightDir));
-                half3 diffuse = texColor.rgb * _BaseColor.rgb * NdotL;
+
+                half3 diffuse = _BaseColor.rgb * NdotL;
+                
+                if (_UseTexture > 0.5)
+                    diffuse = texColor.rgb * _BaseColor.rgb * NdotL;
 
                 half3 reflectDir = reflect(-lightDir, normalWS);
                 half specFactor = pow(saturate(dot(reflectDir, viewDirWS)), _Shininess);

@@ -7,6 +7,7 @@ Shader "Assignment1/ToonBump"
         _myDiffuse ("Diffuse Texture", 2D) = "white" {}
         _myBump ("Bump Texture", 2D) = "bump" {}
         _mySlider ("Bump Amount", Range(0,10)) = 1
+        _UseTexture ("Use Texture", Float) = 1   // Texture Toggle
     }
     SubShader
     {
@@ -55,6 +56,7 @@ Shader "Assignment1/ToonBump"
             CBUFFER_START(UnityPerMaterial)
                 float4 _BaseColor;
                 float _mySlider;
+                float _UseTexture;
             CBUFFER_END
 
             // Vertex Shader
@@ -97,7 +99,11 @@ Shader "Assignment1/ToonBump"
                 // Sample the ramp texture using NdotL to get the correct shade
                 half rampValue = SAMPLE_TEXTURE2D(_RampTex, sampler_RampTex, float2(NdotL, 0)).r;
                 // Multiply the base color by the ramp value and light color
-                half3 finalColor = _BaseColor * albedo.rgb * lightColor * rampValue;
+                half3 finalColor = _BaseColor * lightColor * rampValue;
+
+                if (_UseTexture > 0.5)
+                    finalColor = _BaseColor * albedo.rgb * lightColor * rampValue;
+                
                 // Return the final color with alpha
                 return half4(finalColor, albedo.a);
             }

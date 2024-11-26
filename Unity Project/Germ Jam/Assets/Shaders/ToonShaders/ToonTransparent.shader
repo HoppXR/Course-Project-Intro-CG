@@ -14,6 +14,7 @@ Shader "Assignment1/TransparentToon"
         _RampTex ("Ramp Texture", 2D) = "white" {}
         _RimColor ("Rim Color", Color) = (1, 1, 1, 1)
         _RimPower ("Rim Power", Range(0.1, 8.0)) = 1.5
+        _UseTexture ("Use Texture", Float) = 1   // Texture Toggle
     }
 
     SubShader
@@ -62,6 +63,8 @@ Shader "Assignment1/TransparentToon"
             float4 _RimColor;
             float _RimPower;
 
+            float _UseTexture;
+
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
@@ -85,7 +88,10 @@ Shader "Assignment1/TransparentToon"
                 float lineValue = sin(IN.uv.y * _LineFrequency + _Time.y * _LineSpeed);
                 half3 lineColor = _LineColor.rgb * step(0.5, lineValue);
 
-                half3 finalColor = texColor.rgb * _BaseColor.rgb + fresnelColor + lineColor;
+                half3 finalColor = _BaseColor.rgb + fresnelColor + lineColor;
+
+                if (_UseTexture > 0.5)
+                    finalColor = texColor.rgb * _BaseColor.rgb + fresnelColor + lineColor;
 
                 Light mainLight = GetMainLight();
                 float3 lightDirWS = normalize(mainLight.direction);

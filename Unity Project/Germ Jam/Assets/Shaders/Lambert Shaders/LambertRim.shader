@@ -6,6 +6,7 @@ Shader "Assignment1/LambertRim"
         //_BaseColor ("Base Color", Color) = (1,1,1,1)
         _RimColor ("Rim Color", Color) = (0, 0.5, 0.5, 1)
         _RimPower ("Rim Power", Range(0.5, 8.0)) = 3.0
+        _UseTexture ("Use Texture", Float) = 1   // Texture Toggle
     }
     SubShader
     {
@@ -43,6 +44,7 @@ Shader "Assignment1/LambertRim"
                 float4 _BaseColor;
                 float4 _RimColor;
                 float _RimPower;
+                float _UseTexture;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -72,8 +74,10 @@ Shader "Assignment1/LambertRim"
                 half rimFactor = 1.0 - saturate(dot(viewDirWS, normal));
                 half rimLighting = pow(rimFactor, _RimPower);
 
-                //half3 finalColor = _BaseColor.rgb + _RimColor.rgb * rimLighting;
-                half3 finalColor = texColor.rgb + _RimColor.rgb * rimLighting;
+                half3 finalColor = _BaseColor.rgb + _RimColor.rgb * rimLighting;
+                
+                if (_UseTexture > 0.5)
+                    finalColor = texColor.rgb + _RimColor.rgb * rimLighting;
 
                 return half4(finalColor * NdotL, 1.0);
             }

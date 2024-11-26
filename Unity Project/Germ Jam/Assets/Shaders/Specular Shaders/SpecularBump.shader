@@ -8,6 +8,7 @@ Shader "Assignment1/SpecularBump"
         _myDiffuse ("Diffuse Texture", 2D) = "white" {}
         _myBump ("Bump Texture", 2D) = "bump" {}
         _mySlider ("Bump Amount", Range(0,10)) = 1
+        _UseTexture ("Use Texture", Float) = 1   // Texture Toggle
     }
     SubShader
     {
@@ -51,6 +52,7 @@ Shader "Assignment1/SpecularBump"
                 float4 _SpecColor;
                 float _Shininess;
                 float _mySlider;
+                float _UseTexture;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -86,7 +88,11 @@ Shader "Assignment1/SpecularBump"
                 half3 lightDir = normalize(mainLight.direction);
 
                 half NdotL = saturate(dot(normalWS, lightDir));
-                half3 diffuse = albedo.rgb * _BaseColor.rgb * NdotL;
+
+                half3 diffuse = _BaseColor.rgb * NdotL;
+                
+                if (_UseTexture > 0.5)
+                    diffuse = albedo.rgb * _BaseColor.rgb * NdotL;
 
                 half3 ambientSH = SampleSH(normal);
 
@@ -96,7 +102,10 @@ Shader "Assignment1/SpecularBump"
                 half specFactor = pow(saturate(dot(reflectDir, viewDir)), _Shininess);
                 half3 specular = _SpecColor.rgb * specFactor;
 
-                half3 finalColor = diffuse + ambientSH * albedo.rgb * _BaseColor.rgb + specular;
+                half3 finalColor = diffuse + ambientSH * _BaseColor.rgb + specular;
+                
+                if (_UseTexture > 0.5)
+                    finalColor = diffuse + ambientSH * albedo.rgb * _BaseColor.rgb + specular;
 
                 return half4(finalColor, albedo.a);
             }

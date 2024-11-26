@@ -6,6 +6,7 @@ Shader "Assignment1/LambertBump"
         _BaseColor ("Base Color", Color) = (1,1,1,1)
         _myBump ("Bump Texture", 2D) = "bump" {}
         _mySlider ("Bump Amount", Range(0,10)) = 1
+        _UseTexture ("Use Texture", Float) = 1   // Texture Toggle
     }
     SubShader
     {
@@ -47,6 +48,7 @@ Shader "Assignment1/LambertBump"
             CBUFFER_START(UnityPerMaterial)
                 float4 _BaseColor;
                 float _mySlider;
+                float _UseTexture;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -74,8 +76,11 @@ Shader "Assignment1/LambertBump"
 
                 half3x3 TBN = half3x3(IN.tangetWS, IN.bitangentWS, IN.normalWS);
                 half3 normalWS = normalize(mul(normalTS, TBN));
+
+                half3 finalColor = _BaseColor.rgb;
                 
-                half3 finalColor = texColor.rgb * _BaseColor.rgb;
+                if (_UseTexture > 0.5)
+                    finalColor = texColor.rgb * _BaseColor.rgb;
 
                 Light mainLight = GetMainLight();
                 half3 lightDir = normalize(mainLight.direction);

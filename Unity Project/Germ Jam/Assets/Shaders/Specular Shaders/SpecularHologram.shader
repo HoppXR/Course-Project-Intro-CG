@@ -13,7 +13,8 @@ Shader "Assignment1/HologramSpecular"
         
         _BaseColor ("Base Color", Color) = (1,1,1,1)  
         _SpecColor ("Specular Color", Color) = (1,1,1,1)  
-        _Shininess ("Shininess", Range(0.1,100)) = 16  
+        _Shininess ("Shininess", Range(0.1,100)) = 16
+        _UseTexture ("Use Texture", Float) = 1   // Texture Toggle
     }
 
     SubShader
@@ -60,6 +61,8 @@ Shader "Assignment1/HologramSpecular"
             float4 _SpecColor;
             float _Shininess;
 
+            float _UseTexture;
+
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
@@ -89,14 +92,20 @@ Shader "Assignment1/HologramSpecular"
                 half NdotL = saturate(dot(normalWS, lightDir));
 
                 half3 ambientSH = SampleSH(normalWS);
+                
+                half3 diffuse = _BaseColor.rgb * NdotL;
 
-                half3 diffuse = texColor.rgb * _BaseColor.rgb * NdotL;
+                if (_UseTexture > 0.5)
+                    diffuse = texColor.rgb * _BaseColor.rgb * NdotL;
 
                 half3 reflectDir = reflect(-lightDir, normalWS);
                 half specFactor = pow(saturate(dot(reflectDir, viewDirWS)), _Shininess);
                 half3 specular = _SpecColor.rgb * specFactor;
 
-                half3 finalColor = diffuse + ambientSH * texColor.rgb * _BaseColor.rgb + fresnelColor + lineColor + specular;
+                half3 finalColor = diffuse + ambientSH * _BaseColor.rgb + fresnelColor + lineColor + specular;
+                
+                if (_UseTexture > 0.5)
+                    finalColor = diffuse + ambientSH * texColor.rgb * _BaseColor.rgb + fresnelColor + lineColor + specular;
 
                 return half4(finalColor, texColor.a * _Transparency);
             }

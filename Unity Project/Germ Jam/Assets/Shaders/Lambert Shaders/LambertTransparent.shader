@@ -5,6 +5,7 @@ Shader "Assignment1/LambertTransparent"
         _MainTex ("Base Texture", 2D) = "white" {}
         _BaseColor ("Base Color", Color) = (1,1,1,1)
         _Transparency ("Transparency", Range (0, 1)) = 0.5
+        _UseTexture ("Use Texture", Float) = 1   // Texture Toggle
     }
     SubShader
     {
@@ -41,6 +42,7 @@ Shader "Assignment1/LambertTransparent"
 
             CBUFFER_START(UnityPerMaterial)
                 float4 _BaseColor;
+                float _UseTexture;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -56,7 +58,10 @@ Shader "Assignment1/LambertTransparent"
             {
                 half4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv);
 
-                half3 finalColor = texColor.rgb * _BaseColor.rgb;
+                half3 finalColor = _BaseColor.rgb;
+
+                if (_UseTexture > 0.5)
+                    finalColor = texColor.rgb * _BaseColor.rgb;
 
                 half3 normal = normalize(IN.normalWS);
                 Light mainLight = GetMainLight();

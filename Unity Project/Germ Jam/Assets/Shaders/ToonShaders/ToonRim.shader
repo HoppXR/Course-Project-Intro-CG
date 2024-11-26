@@ -3,10 +3,11 @@ Shader "Assignment1/ToonRim"
     Properties
     {
         _MainTex ("Base Texture", 2D) = "white" {}
-        //_BaseColor ("Base Color", Color) = (1, 1, 1, 1)
+        _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
         _RampTex ("Ramp Texture", 2D) = "white" {}
         _RimColor ("Rim Color", Color) = (1, 1, 1, 1)     // Rim color
         _RimPower ("Rim Power", Range(0.1, 8.0)) = 1.5    // Rim width
+        _UseTexture ("Use Texture", Float) = 1   // Texture Toggle
     }
 
     SubShader
@@ -48,6 +49,7 @@ Shader "Assignment1/ToonRim"
                 float4 _BaseColor;
                 float4 _RimColor;   // Rim lighting color
                 float _RimPower;    // Rim lighting width/intensity
+                float _UseTexture;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -85,7 +87,10 @@ Shader "Assignment1/ToonRim"
 
                 // Multiply the base color by the ramp value and light color
                 //half3 finalColor = _BaseColor.rgb * lightColor * rampValue + _RimColor.rgb * rimLighting;
-                half3 finalColor = texColor.rgb * lightColor * rampValue + _RimColor.rgb * rimLighting;
+                half3 finalColor = _BaseColor.rgb * lightColor * rampValue + _RimColor.rgb * rimLighting;
+
+                if (_UseTexture > 0.5)
+                    finalColor = texColor.rgb * lightColor * rampValue + _RimColor.rgb * rimLighting;
 
                 // Return the final color with alpha
                 return half4(finalColor, _BaseColor.a);
