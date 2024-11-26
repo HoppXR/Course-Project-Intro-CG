@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83c0a7dbcd702e43b3a688b6353c73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noTexture: {fileID: 2100000, guid: 949033ebf2181814d8ae36da7a8d4112, type: 2}
   lambertMaterial: {fileID: 2100000, guid: 5fa86d27ddaf2b44cbfc3cd4a28ebae6, type: 2}
   specularMaterial: {fileID: 2100000, guid: 3cf7c513aa8f62047bc52fb3fa587b20, type: 2}
   toonMaterial: {fileID: 2100000, guid: 7b05b45c9a027354aa9fadd95761a20a, type: 2}
