@@ -73,7 +73,7 @@ public class RoomScreen : MonoBehaviour {
     }
 
     private void OnCurrentLobbyRefreshed(Lobby lobby) {
-        _waitingText.text = $"Waiting on players... {lobby.Players.Count}/{lobby.MaxPlayers}";
+        _waitingText.text = $"Waiting on players... {lobby.Players.Count} - {lobby.MaxPlayers}";
     }
 
     public void OnReadyClicked() {
