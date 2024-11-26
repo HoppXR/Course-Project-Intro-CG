@@ -11,8 +11,9 @@ public class FallingObject : NetworkBehaviour
     [SerializeField] private float nextFallTime;
     private float _timer;
     
-    [Header("Particles")]
+    [Header("Visual Effects")]
     [SerializeField] private ParticleSystem dropParticle;
+    [SerializeField] private CameraShake cameraShake;
     
     [Header("Audio")]
     [SerializeField] private AudioClip shakeSound;
@@ -54,5 +55,7 @@ public class FallingObject : NetworkBehaviour
     public void PlayDropSound()
     {
         GameManager.instance.PlaySound(dropSound, transform, 0.8f);
+        
+        StartCoroutine(cameraShake.Shake(0.2f, 0.25f));
     }
 }

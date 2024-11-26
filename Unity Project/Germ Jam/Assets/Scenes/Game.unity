@@ -264,6 +264,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014078}
   m_CullTransparentMesh: 1
+--- !u!1 &75477445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75477446}
+  m_Layer: 0
+  m_Name: Camera Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &75477446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75477445}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 887697994}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131956716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1953,7 @@ GameObject:
   - component: {fileID: 887697993}
   - component: {fileID: 887697992}
   - component: {fileID: 887697991}
+  - component: {fileID: 887697995}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2039,13 +2072,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887697990}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 18, z: 0}
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 75477446}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &887697995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887697990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f149f43961f6bff48ab62e6efaabf6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &902322344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2942,6 +2987,7 @@ MonoBehaviour:
   fallCooldown: 25
   nextFallTime: 3
   dropParticle: {fileID: 1590974601}
+  cameraShake: {fileID: 887697995}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
   dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!1 &1211891116
@@ -4185,7 +4231,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -9022,6 +9068,7 @@ MonoBehaviour:
   fallCooldown: 25
   nextFallTime: 23
   dropParticle: {fileID: 165899553}
+  cameraShake: {fileID: 887697995}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
   dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!224 &1739570492 stripped
@@ -9878,6 +9925,7 @@ MonoBehaviour:
   fallCooldown: 25
   nextFallTime: 18
   dropParticle: {fileID: 743286572}
+  cameraShake: {fileID: 887697995}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
   dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!1 &2067585282
@@ -10483,6 +10531,7 @@ MonoBehaviour:
   fallCooldown: 25
   nextFallTime: 8
   dropParticle: {fileID: 755144053}
+  cameraShake: {fileID: 887697995}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
   dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!4 &988828832427832437
@@ -11414,6 +11463,7 @@ MonoBehaviour:
   fallCooldown: 25
   nextFallTime: 13
   dropParticle: {fileID: 902322346}
+  cameraShake: {fileID: 887697995}
   shakeSound: {fileID: 8300000, guid: 845a184946ff41e41bb66056f5750c8c, type: 3}
   dropSound: {fileID: 8300000, guid: 73953c0ee86b884479dfd7b6eac56e0d, type: 3}
 --- !u!114 &3469287837167114396
@@ -13665,7 +13715,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 2117071552}
   - {fileID: 490055038}
-  - {fileID: 887697994}
+  - {fileID: 75477446}
   - {fileID: 1877910377}
   - {fileID: 832575519}
   - {fileID: 1642089398}
