@@ -25,17 +25,29 @@ All of these improvements were made to refine our game and make it juicy.
 The texturing was made with Adobe Substance Painter & finalized in Adobe Photoshop. The goal of the textures was to give it a silly & cartoony vibe as the game’s theme around bacteria and germs would be rather disgusting otherwise.
 
 ### Player Character Models
+
+![](MonesterTextures.png)
+
 The design of the player character’s models were bold and simple colours that followed the colour scheme of basic bacteria colours. This would make the characters easy to identify from an orthographic view. To add to the cartoonish style, they were all given silly monster faces you would typically find in an elementary school classroom to sell that friendly and silly fun vibe. They all intend to look like silly monsters & the bright colours and goofy faces all help sell that.
 Environment Textures
 Texturing the environment was simpler, as those aren’t difficult to spot due to their scale, so they could be realistic. They aimed to be stylized, so they have a hue of blue to contrast better with the complimenting scenery.
 
-### Falling Objects
+### Falling Objects!
+
+[](<glass object.png>)
+
 The falling objects were lightly textured as they were made with a glass shader since they tend to be made with glass and transparent textures in real life.
 
 ### Microscope
+
+![](MicroscopeBase2.png)
+
 Creating the microscope involved giving it a little bit of a gritty and grainy texture, in order to make it look interesting and as previously mentioned, to contrast the scene. It was also made to have imperfections and some parts look older and wiped away, similar to how older lab equipment may look. Besides that it was made to look as realistic and proportional in order to make it feel like an appropriate playing area for the game.
 
-Germ Aura Particles
+### Germ Aura Particles
+
+![](GermParticleBase.png)
+
 Lastly, the germ aura particles were textured with a transparent map made in Photoshop with a hue and consecutive transparent squares to make them look ‘shiny’ and noticeable while being small and a neat visual.
 
 ## Part 3: Visual Effects
@@ -61,12 +73,16 @@ a public method had to be called in an animation event that would trigger the pa
 
 ### Camera Shake
 
+![](<camera shake.gif>)
+
 The camera shake was a simple but effective visual effect that enhanced our gameplay. A script was attached to the camera that would randomly move the x and y positions a defined amount over a set duration of time inside a coroutine. The method was made public to be called from other scripts, and it was used in the falling objects script to be called inside of an animation event.
 
 
 This visual effect enhances our game by making the falling object feel heavy and adds impact to the fall. Otherwise, the object would not feel like it would make an impact.
 
 ### Glass Shader
+
+![](<glass shader.png>)
 
 The glass shader uses the 4th RGB value, alpha, and transparent render type to give any object it is applied to a glass-like look. It enhances our game by making some of the objects look like their real-life counterparts. It makes the flask, syringe, goggles, and thermometer look realistic and enhances the look of our game.
 
