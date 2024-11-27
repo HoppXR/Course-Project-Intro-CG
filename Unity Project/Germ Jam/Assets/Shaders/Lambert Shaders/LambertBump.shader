@@ -10,7 +10,7 @@ Shader "Assignment1/LambertBump"
     }
     SubShader
     {
-        Tags { "RenderPipeline" = "UniversalRenderPipeline" "RenderType" = "Opaque" }
+        Tags { "RenderType" = "Opaque" }
         
         Pass
         {

@@ -19,7 +19,7 @@ Shader "Assignment1/TransparentToon"
 
     SubShader
     {
-        Tags { "RenderPipeline" = "UniversalRenderPipeline" "Queue" = "Transparent" "RenderType" = "Transparent" }
+        Tags { "Queue" = "Transparent" "RenderType" = "Transparent" }
 
         Blend SrcAlpha OneMinusSrcAlpha
 

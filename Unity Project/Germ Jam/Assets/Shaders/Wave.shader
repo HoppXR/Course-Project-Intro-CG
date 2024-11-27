@@ -11,7 +11,7 @@ Shader "HoppXR/Wave"
     
     SubShader
     {
-        Tags { "RenderPipeline" = "UniversalRenderPipeline" "RenderType" = "Opaque" }
+        Tags { "RenderType" = "Opaque" }
         
         Pass
         {

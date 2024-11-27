@@ -13,7 +13,7 @@ Shader "Assignment1/ToonBump"
     {
         Tags
         {
-            "RenderPipeline" = "UniversalRenderPipeline" "RenderType" = "Ramp"
+            "RenderType" = "Ramp"
         }
         Pass
         {

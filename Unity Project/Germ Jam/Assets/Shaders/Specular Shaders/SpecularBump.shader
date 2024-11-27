@@ -12,7 +12,7 @@ Shader "Assignment1/SpecularBump"
     }
     SubShader
     {
-        Tags { "RenderPipeline" = "UniversalRenderPipeline" "RenderType" = "Opaque" }
+        Tags { "RenderType" = "Opaque" }
         
         Pass
         {

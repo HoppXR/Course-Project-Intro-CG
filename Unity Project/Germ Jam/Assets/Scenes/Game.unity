@@ -12611,9 +12611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95219dc1e35bf8843b00f5b5d2bb205e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRotation: -0.39
-  yRotation: 0.22
-  zRotation: 0.4
+  xRotation: -14.5
+  yRotation: 20.6
+  zRotation: 14.8
 --- !u!23 &4539702728769732260
 MeshRenderer:
   m_ObjectHideFlags: 0

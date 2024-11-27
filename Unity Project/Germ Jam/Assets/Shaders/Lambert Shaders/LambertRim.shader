@@ -10,7 +10,7 @@ Shader "Assignment1/LambertRim"
     }
     SubShader
     {
-        Tags { "RenderPipeline" = "UniversalRenderPipeline" "RenderType" = "Opaque" }
+        Tags { "RenderType" = "Opaque" }
         
         Pass
         {
