@@ -32,9 +32,9 @@ The design of the player character’s models were bold and simple colours that 
 Environment Textures
 Texturing the environment was simpler, as those aren’t difficult to spot due to their scale, so they could be realistic. They aimed to be stylized, so they have a hue of blue to contrast better with the complimenting scenery.
 
-### Falling Objects!
+### Falling Objects
 
-[](<glass object.png>)
+![](<glass object.png>)
 
 The falling objects were lightly textured as they were made with a glass shader since they tend to be made with glass and transparent textures in real life.
 
