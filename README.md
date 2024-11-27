@@ -1,5 +1,7 @@
 # Course Project Intro to CG
 
+![](germjam.png)
+
 ## Part 1: Improvements
 The improvements we made on Assignment 1 include game juice and the overall polish of our game. This covers visual enhancements to our game, game feedback and feel, and most importantly sound effects.
 
@@ -13,7 +15,11 @@ When the player gets squished by a falling object, the player will become flat, 
 
 All of these improvements were made to refine our game and make it juicy.
 
+![](die.gif)
+
 ## Part 2: Texturing
+
+![](textures.gif)
 
 ### Overview
 The texturing was made with Adobe Substance Painter & finalized in Adobe Photoshop. The goal of the textures was to give it a silly & cartoony vibe as the game’s theme around bacteria and germs would be rather disgusting otherwise.
@@ -38,6 +44,8 @@ Some of the visual effects that we added to our game include 3 different particl
 
 ### Particles
 
+![](<germ particles.gif>)
+
 As for the 3 particle systems, we decided to make debris, environment, and death particles.
 
 - The debris particles create a cool effect making it look like the falling object is more destructive by sending bits and pieces of the ground flying in the air.
@@ -45,6 +53,8 @@ As for the 3 particle systems, we decided to make debris, environment, and death
 - The environment particles were made to create a germ-themed atmosphere, bits and pieces of bacteria float around the game scene making it feel less empty.
 
 - The death particles made the player's death have more impact, it made it look like they truly got squished by the falling object.
+
+![](smash.gif)
 
 When it came to implementation, all of the particle systems were children of the object that emitted the particles in the hierarchy. The parent object has a script attached that references the particle system. In some cases like the player death particles, the particle system could be triggered from the same script, but in other cases like the debris particles, 
 a public method had to be called in an animation event that would trigger the particles, and the script and animator component had to be on the same game object to do so.
@@ -61,6 +71,8 @@ This visual effect enhances our game by making the falling object feel heavy and
 The glass shader uses the 4th RGB value, alpha, and transparent render type to give any object it is applied to a glass-like look. It enhances our game by making some of the objects look like their real-life counterparts. It makes the flask, syringe, goggles, and thermometer look realistic and enhances the look of our game.
 
 ### Wave Shader
+
+![](<flask fluid.gif>)
 
 The wave shader uses sin waves to displace the vertex y position and then applies the transformation displacement position to clip space, resulting in the wave effect. Parameters like frequency, speed, and amplitude will affect the wave's end result. Frequency determines how many waves per second, speed determines how fast it goes, and amplitude determines the amount of y-position displacement.
 
